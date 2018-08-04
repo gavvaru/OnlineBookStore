@@ -1,0 +1,53 @@
+﻿@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+{<div class="container" id="loginForm" style="padding-top:20px;">
+        <fieldset>
+            <legend>Login</legend>
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="col-sm-10">
+                <table>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.EmailAddress)
+                        </td>
+                        <td>@Html.EditorFor(model => model.EmailAddress)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.Password)
+                        </td>
+                        <td>@Html.EditorFor(model => model.Password)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.RememberMe)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.RememberMe)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" id="btnLogin" value="Login" class="btn-primary" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>@Html.ActionLink("Register", "Register", "Account") if you don't have a local account.</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+    </div>
+}
+<style>
+    #loginForm td{
+        padding:5px;
+    }
+</style>

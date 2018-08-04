@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Book>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <h2>Featured Books</h2>
+    <p>Choose from the Trending Books in The Market</p>
+    <hr />
+    <div class="row">
+        @foreach (var book in Model)
+        {
+            <div class="col-md-2">
+                <div class="thumbnail">
+                    <a>
+                        <img class="img-responsive" src="~/BookImages/@book.BookImageURL" alt="Lights" style="height:150px;width:100px;">
+                        <div class="caption">
+                            <p title="@book.BookDescription">@book.BookName</p>
+                            <p>by <b>@book.AuthorName</b> </p>
+                            <p>Price: <del>$@book.Price</del> $@book.OfferedPrice </p>
+                            <p>Rating: @book.Rating / 5</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+
+
+    </div>
+   
+</div>
+
+<style>
+    .thumbnail{
+        height:300px;
+        overflow-y:auto;
+    }
+    .thumbnail a{
+        text-decoration:none;
+    }
+    .thumbnail p{
+        margin:0px;
+    }
+</style>
